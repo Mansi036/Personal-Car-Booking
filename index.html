@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Car Booking | UP Taxi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-flex">
+            <!-- Left: Contact Details -->
+            <div class="contact-info">
+                <span>Sudhir: 9027617032</span>
+                <span>Kuldeep: 7668227632</span>
+            </div>
+
+            <!-- Center: Logo -->
+            <div class="logo">
+                <i class="fas fa-taxi"></i>
+                <span class="highlight">Personal Car Booking</span>
+            </div>
+            
+            <!-- Right: Fuel Badge -->
+            <div id="fuel-badge" class="fuel-badge">
+                <div class="fuel-icon">
+                    <i class="fas fa-gas-pump"></i>
+                </div>
+                <div class="fuel-info">
+                    <span class="label">Petrol (UP)</span>
+                    <span id="petrol-price" class="price">Fetching...</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="app-content" class="container">
+        <section class="booking-card">
+            <h2><i class="fas fa-route"></i> Book Your Ride</h2>
+            <form id="booking-form">
+                <div class="input-group">
+                    <label>Customer Name</label>
+                    <input type="text" id="cust-name" placeholder="Enter name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Contact Number (Primary)</label>
+                    <input type="tel" id="cust-phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <label>Pickup Location</label>
+                        <input type="text" id="pickup" placeholder="e.g. Saharanpur" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Drop-off Location</label>
+                        <input type="text" id="drop" placeholder="e.g. Dehradun" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <label>Distance (km)</label>
+                        <input type="number" id="distance" placeholder="0" min="1" required>
+                    </div>
+                    <div class="input-group toggle-group">
+                        <label>AC Service</label>
+                        <label class="switch">
+                            <input type="checkbox" id="ac-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Customer sees only Total Fare -->
+                <div class="fare-breakdown" id="fare-display">
+                    <div class="breakdown-total">
+                        <span>Estimated Total Fare:</span>
+                        <span id="total-fare">₹0.00</span>
+                    </div>
+                    <!-- Hidden inputs for Owner Breakdown -->
+                    <input type="hidden" id="hidden-fuel-cost">
+                    <input type="hidden" id="hidden-service-fee">
+                    <input type="hidden" id="hidden-ac-charge">
+                </div>
+
+                <button type="submit" class="btn-confirm">Proceed to Confirm</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+            <h2>Booking Ready!</h2>
+            <p>Details compiled. Please notify the team:</p>
+            <div class="alert-actions">
+                <button id="btn-notify-uncle" class="btn-wa uncle"><i class="fab fa-whatsapp"></i> Notify Owner 1</button>
+                <button id="btn-notify-father" class="btn-wa father"><i class="fab fa-whatsapp"></i> Notify Owner 2</button>
+            </div>
+            <button onclick="closeModal()" class="btn-close">Back to Form</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
